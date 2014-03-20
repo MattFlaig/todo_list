@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
+
+  
+</head>
+<body>
+  <header class= "navbar navbar-fixed-top">
+	<div class= "navbar-custom">
+		<div class= "container"><%= link_to(t("links.my_todo_list"), todo_items_path, id: "logo") %>
+			<ul class= "nav pull-right">
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%= t("links.language")%>  <b class="caret"></b><a/>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to(image_tag('/images/de.png'), locale_path('de')) %>
+            </li>
+            <li>
+              <%= link_to(image_tag('/images/us.png'), locale_path('en')) %>
+            </li>
+          </ul>
+        </li>
+        <% if logged_in? %>  
+          <li><%= link_to(t("links.new_todo_item"), new_todo_item_path) %></li>
+          <li><%= link_to(t("links.logout"), logout_path) %></li>
+        <% else %>
+          <li><%= link_to(t("links.home"), root_path) %></li>
+          <li><%= link_to(t("links.login"), login_path) %></li>
+          <li><%= link_to(t("links.register"), new_user_path) %></li>
+        <% end %>
+			</ul>
+		</div>
+	</div>
+  </header>
+			
+<div class="container">
+  <%= render 'layouts/messages' %>
+   
+  <%= yield %>
+</div>
+
+</body>
+  <footer>
+
+  </footer>
+</html>

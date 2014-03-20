@@ -1,0 +1,32 @@
+<div class= "center hero-unit">
+<h1><%= t("text.login") %></h1>
+</br>
+
+<%= form_tag login_path do %>
+<fieldset>
+<div class="control-group">
+  <%= label_tag t("text.username") %>
+    <div class="controls">
+    <%= text_field_tag :username %>
+    </div>
+</div>
+<div class="control-group">
+  <%= label_tag t("text.email") %>
+    <div class="controls">
+    <%= text_field_tag :email %>
+    </div>
+</div>
+<div class="control-group">
+  <%= label_tag t("text.password") %>
+    <div class="controls">
+    <%= password_field_tag :password %>
+    </div>
+</div>
+ 
+</br>
+<div>
+  <%= submit_tag t("links.login"), class: "btn btn-large btn-primary" %>
+</div>
+</fieldset>
+<% end %>
+</div>

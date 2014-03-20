@@ -1,0 +1,36 @@
+<div class= "center hero-unit">
+<h1><%= current_user.username %>'s <%= t("text.todos") %></h1>
+</br>
+</br>
+<h2><%= t("text.still_to_be_done") %>: </h2>
+<% @todo_items.each do |todo_item| %>
+  <% if todo_item.status == 0 %>
+  
+  <div class= "well">
+    <ul>
+	    <li>
+	      <%= link_to todo_item.name, todo_item_path(todo_item) %>
+	    </li>
+    </ul>
+  </div>
+
+  <% end %>
+<% end %>
+
+
+</br>
+<h2> <%= t("text.already_done") %>: </h2>
+<% @todo_items.each do |todo_item| %>
+  <% if todo_item.status == 1 %>
+
+  <div class= "well well-lg">
+    <ul>
+      <li>
+        <%= link_to todo_item.name, todo_item_path(todo_item) %>
+      </li>
+    </ul>
+  </div>
+
+  <% end %>
+<% end %>
+</div>
